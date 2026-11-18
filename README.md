@@ -12,5 +12,4 @@ CCAI9013 Group Project
 
 AI features use Chrome's built-in on-device model when it is available, so no names or photos leave the device. Screen locks and family linking are simulated for the demo.
 
-## Team
-Chen Ziheng (Jerry) · Leung Hei Tung (Caitlyn) · Ekaterina Anufrieva (Alex)
+
