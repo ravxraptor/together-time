@@ -96,5 +96,11 @@ const ZH = {
 'Activities completed':'已完成活動','Together · on their own':'一起 · 自己','Screen time recorded':'已記錄螢幕時間','min':'分鐘','No feelings were shared this week.':'這星期沒有分享感受。',
 'Date':'日期','Activity':'活動','Who':'和誰','Feeling':'感受','Status':'狀態','Together':'一齊玩','On their own':'自己做','Approved':'已確認','Awaiting review':'等待審核',
 'Conversation questions used':'用過的對話問題','Conversation questions to try':'可以試試的對話問題',
+'FOR FIRST-TIME VISITORS · DEMO':'第一次使用 · 示範','Try it with sample data':'用範例資料試試',
+'Load a sample after-school plan (16:00–16:30 offline play, 16:30–17:30 games break, 17:30–18:00 homework) and two sample photo submissions with feelings and an AI note. All of it is demo data, saved only in this browser.':'載入範例放學後計劃（16:00–16:30 離線遊戲、16:30–17:30 暫停遊戲、17:30–18:00 功課）和兩個範例相片提交，包括感受和 AI 筆記。全部都是示範資料，只保存在這個瀏覽器。',
+'Load demo data':'載入示範資料','Reset demo':'重設示範','Reset the demo?':'要重設示範嗎？','Yes, reset everything':'是，全部重設','Cancel':'取消',
+'This removes all plans, photos, feelings and settings saved in this browser. It cannot be undone.':'這會刪除這個瀏覽器保存的所有計劃、相片、感受和設定，而且無法還原。',
+'Demo data loaded. Look for the “demo” labels.':'已載入示範資料，請留意「示範」標籤。','The demo has been reset.':'示範已重設。','Demo sample':'示範範例',
+'After-school plan (demo)':'放學後計劃（示範）','Offline play time':'離線遊戲時間','Games break':'暫停遊戲','Homework time':'功課時間','Reading and a maths worksheet':'閱讀和數學工作紙',
 'Listen to this page':'聽這頁','Listen':'聆聽','Stop':'停止','Choose a language':'選擇語言','Read this part':'讀這部分'
 };

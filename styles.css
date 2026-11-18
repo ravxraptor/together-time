@@ -238,3 +238,17 @@ input[type='checkbox'], input[type='radio'] { accent-color: #5b927f; width: 17px
   .report section, .report-stats, .report-table tr { break-inside: avoid; }
   .report-stats > div, .report-demo, .feeling-counts li { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
+
+.demo-panel { margin-top: 18px; border-style: dashed; border-color: #e6d9b8; background: #fffdf6; }
+.demo-panel h2 { margin: 8px 0; }
+.demo-chip { display: inline-block; background: #f2eee3; color: #8f7a52; border-radius: 20px; padding: 4px 9px; font-size: 10px; font-weight: 700; letter-spacing: .04em; vertical-align: middle; }
+.confirm-box { margin-top: 16px; border: 1px solid #efc9b8; background: #fff4ee; border-radius: 12px; padding: 14px 16px; }
+.confirm-box p { color: #8a5a45 !important; margin: 0 0 10px; }
+.home-status { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; margin: 18px 0 0; align-items: stretch; }
+.home-status .day-status, .home-status .child-plan-status { margin: 0; padding: 16px 18px; }
+.home-status .day-status { flex-wrap: wrap; gap: 12px; }
+.home-status .day-status-icon { flex-basis: 40px; height: 40px; font-size: 22px; }
+.home-status .day-status h2 { font-size: 16px; }
+.home-status .day-status p, .home-status .child-plan-status p { font-size: 12px; }
+.home-status .day-status .button { padding: 9px 12px; font-size: 11px; }
+@media (max-width: 1050px) { .home-status { grid-template-columns: 1fr; } }
