@@ -37,7 +37,7 @@ function saveImmediateLock(form) {
   state.family.lockScope = scope;
   state.family.lockItems = items;
   state.family.manualLock = true;
-  saveState(); document.querySelector('#modal-root').innerHTML = ''; render();
+  saveState(); closeDialog(); render();
   toast('Parent demo lock is on.');
 }
 /** Identify current scheduled restrictions as a plan, not an actual lock. */

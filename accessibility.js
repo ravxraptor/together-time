@@ -9,7 +9,7 @@ function translate(text) {
   if (ZH[text]) return chinese(ZH[text]);
   const greeting = text.match(/^Hi, (.+)!$/);
   if (greeting) return `你好，${greeting[1]}！`;
-  const match = text.match(/^(\s*(?:[🎂🎨👨‍👩‍👧🐾🌈⭐🌍⏱️🧺✨♡◷✿]+\s*)?)(.*?)(\s*)$/u);
+  const match = text.match(/^(\s*(?:[🎂🎨👨‍👩‍👧🐾🌈⭐🌍⏱️🧺✨♡◷✿✦◇]+\s*)?)(.*?)(\s*)$/u);
   return match && ZH[match[2]] ? match[1] + chinese(ZH[match[2]]) + match[3] : text;
 }
 /** Pick English or Chinese wording for built sentences; Mandarin gets simplified characters. */
@@ -44,7 +44,7 @@ function listenControls() {
 }
 /** Read text using the device's available English or Cantonese speech voice. */
 function speakText(text) {
-  if (!window.speechSynthesis || typeof SpeechSynthesisUtterance === 'undefined') { toast(currentLanguage() !== 'en' ? '此裝置不支援朗讀。' : 'Read-aloud is not available on this device.'); return; }
+  if (!window.speechSynthesis || typeof SpeechSynthesisUtterance === 'undefined') { toast('Read-aloud is not available on this device.'); return; }
   const clean = String(text || '').replace(/[\p{Extended_Pictographic}\u{FE0F}\u{200D}\u{20E3}]/gu, ' ').replace(/\s+/g, ' ').trim();
   if (!clean) return;
   const utterance = new SpeechSynthesisUtterance(clean);

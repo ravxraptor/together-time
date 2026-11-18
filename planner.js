@@ -76,7 +76,7 @@ function savePlanBlock(form) {
   const updated = {id: id || crypto.randomUUID(), type, title, start, end, ...schedule,
     ...(type === 'activity' ? {options: entries, activityMode: mode, activityIds: ids, chosen: entries.includes(previous?.chosen) ? previous.chosen : '', chosenByDate: Object.fromEntries(Object.entries(previous?.chosenByDate || {}).filter(([, choice]) => entries.includes(choice)))} : type === 'homework' ? {notes: String(data.get('notes') || '').trim().slice(0, 300), doneDates: previous?.doneDates || {}} : {apps: entries, unlockGoal: goal})};
   setPlanBlocks([...planBlocks().filter(b => b.id !== id), updated]);
-  saveState(); document.querySelector('#modal-root').innerHTML = ''; render(); toast('Daily plan saved.');
+  saveState(); closeDialog(); render(); toast('Daily plan saved.');
 }
 /** Present choices in a child-friendly dialog. */
 function choosePlanBlock(id) {
@@ -125,10 +125,10 @@ document.addEventListener('click', event => {
   if (action === 'choose') choosePlanBlock(id);
   if (action === 'generate') generatePlanIdeas();
   if (action === 'samples') samplePlanIdeas();
-  if (action === 'delete') { setPlanBlocks(planBlocks().filter(b => b.id !== id)); saveState(); document.querySelector('#modal-root').innerHTML = ''; render(); toast('Block removed.'); }
+  if (action === 'delete') { setPlanBlocks(planBlocks().filter(b => b.id !== id)); saveState(); closeDialog(); render(); toast('Block removed.'); }
   if (action === 'select') {
     const block = planBlocks().find(b => b.id === id);
-    if (block && block.options[Number(index)]) { block.chosenByDate = {...block.chosenByDate, [plannerDate]: block.options[Number(index)]}; delete block.chosen; saveState(); document.querySelector('#modal-root').innerHTML = ''; render(); toast('Your choice is saved!'); }
+    if (block && block.options[Number(index)]) { block.chosenByDate = {...block.chosenByDate, [plannerDate]: block.options[Number(index)]}; delete block.chosen; saveState(); closeDialog(); render(); toast('Your choice is saved!'); }
   }
 });
 document.addEventListener('submit', event => { if (event.target.id === 'plan-form') { event.preventDefault(); savePlanBlock(event.target); } });

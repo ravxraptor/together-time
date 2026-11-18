@@ -55,7 +55,7 @@ function createPlan(form) {
   if (!name) { toast('Please enter a plan name.'); return; }
   ensurePlans().push({id: crypto.randomUUID(), name: name.slice(0, 40), blocks: []});
   state.family.activePlan = state.family.plans[state.family.plans.length - 1].id;
-  saveState(); document.querySelector('#modal-root').innerHTML = ''; render(); toast('New plan is active.');
+  saveState(); closeDialog(); render(); toast('New plan is active.');
 }
 /** Handle plan creation, changing plans, and viewing a different day. */
 document.addEventListener('click', event => {
