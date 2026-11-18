@@ -183,3 +183,23 @@ input[type='checkbox'], input[type='radio'] { accent-color: #5b927f; width: 17px
 .idea-card ol { margin: 8px 0 4px; padding-left: 20px; color: #4e6a5e; font-size: 13px; line-height: 1.6; white-space: normal; }
 .question-card { background: #fff6ed; border-radius: 10px; padding: 10px 13px; margin: 10px 0; color: #9a6a52; font-size: 12px; white-space: normal; }
 .question-card p { margin: 4px 0 0 !important; color: #865f4b !important; font-size: 13px !important; }
+
+.feeling-step { border: 0; padding: 0; margin: 4px 0 20px; }
+.feeling-step legend { font-weight: 700; color: #536c65; font-size: 12px; margin-bottom: 10px; }
+.feeling-grid { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 8px; }
+.feeling-card { position: relative; cursor: pointer; }
+.feeling-card input { position: absolute; opacity: 0; }
+.feeling-card span { display: grid; justify-items: center; gap: 4px; padding: 10px 4px; border: 2px solid #e3eee3; border-radius: 14px; background: #fff; color: #527466; }
+.feeling-card b { font-size: 34px; line-height: 1.1; }
+.feeling-card small { font-size: 11px; font-weight: 700; text-align: center; }
+.feeling-card input:checked + span { border-color: #e0a07f; background: #fff3ea; }
+.feeling-card input:focus-visible + span { outline: 3px solid #315e54; }
+.feeling-chip { display: inline-block; background: #fff3ea; color: #a5664a; border-radius: 20px; padding: 4px 10px; font-size: 11px; font-weight: 700; margin: 2px 0 6px; }
+.feeling-summary { margin: 0 0 18px; }
+.feeling-summary h2 { margin: 6px 0 12px; }
+.feeling-counts { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; padding: 0; margin: 0; }
+.feeling-counts li { display: flex; align-items: center; gap: 8px; background: #fbf8f1; border-radius: 30px; padding: 8px 14px; }
+.feeling-counts span { font-size: 24px; }
+.feeling-counts b { font: 900 18px Nunito, sans-serif; color: #5e9282; }
+.feeling-counts small { color: #8c9a95; font-size: 11px; }
+@media (max-width: 420px) { .feeling-card b { font-size: 28px; } .feeling-card small { font-size: 10px; } }

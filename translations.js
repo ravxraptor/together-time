@@ -87,5 +87,6 @@ const ZH = {
 'An AI note (on-device, or a labelled demo) is added to each photo. You still approve it.':'每張相片會加上 AI 筆記（裝置內或有標示的示範），但仍需由你確認。',
 'AI ideas run on-device in compatible Chrome browsers. Elsewhere you will see a labelled demo idea built from their profile.':'相容的 Chrome 瀏覽器可在裝置內產生 AI 點子；其他瀏覽器會根據孩子資料顯示有標示的示範點子。',
 'Suggest ideas with AI ✨':'用 AI 建議點子 ✨','GUIDED IDEAS':'活動建議','Find their next favourite':'找下一個最愛活動',
+'How did it feel?':'感覺怎樣？','Happy':'開心','Proud':'自豪','Calm':'平靜','Silly':'搞笑','Frustrated':'有點沮喪','Ask them':'問問孩子','FEELINGS · LAST 7 DAYS':'感受 · 過去 7 天',
 'Listen to this page':'聽這頁','Listen':'聆聽','Stop':'停止','Choose a language':'選擇語言','Read this part':'讀這部分'
 };
