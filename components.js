@@ -2,7 +2,7 @@
 const CHILD_NAV=[['home','⌂','My day'],['explore','✿','Explore'],['screen','◷','Screen time'],['progress','☆','My progress'],['profile','☺','My profile']];
 const PARENT_NAV=[['overview','▦','Overview'],['activities','✿','Activities'],['reviews','▧','Photo reviews'],['settings','◷','Screen time'],['family','♡','Family & linking']];
 /** Show a brief confirmation without interrupting the current screen. */
-function toast(message){const node=document.querySelector('#toast');node.textContent=message;node.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>node.classList.remove('show'),3500);}
+function toast(message){const node=document.querySelector('#toast');node.textContent=typeof translate==='function'?translate(message):message;node.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>node.classList.remove('show'),3500);}
 /** Render a sidebar navigation with the active screen indicated. */
 function navMarkup(items,active){return items.map(([id,icon,label])=>`<button class="nav-item ${active===id?'active':''}" data-action="nav" data-page="${id}" ${active===id?'aria-current="page"':''}><span class="nav-icon">${icon}</span><span>${label}</span>${id==='reviews'&&pending().length?`<em>${pending().length}</em>`:''}</button>`).join('');}
 /** Render one selectable activity card. */

@@ -49,7 +49,7 @@ p { line-height: 1.65; }
 .preview-pill, .pill { display: inline-flex; align-items: center; border-radius: 50px; font-size: 9px; font-weight: 700; letter-spacing: .09em; padding: 9px 13px; }
 .preview-pill { background: #f2eee3; color: #a1926f; }
 .top-avatar { width: 35px; height: 35px; display: grid; place-items: center; background: #f3decd; border-radius: 50%; font-size: 19px; }
-.view-toggle, .mobile-brand { display: none; }
+.view-toggle, .mobile-brand, .mobile-nav { display: none; }
 .content { max-width: 1480px; margin: 0 auto; padding: 35px 5.4% 30px; }
 .child-hero { min-height: 340px; border-radius: 22px; background: #eaf2eb; overflow: hidden; display: flex; position: relative; }
 .hero-copy { width: 62%; z-index: 1; padding: 47px 0 44px 5.5%; }

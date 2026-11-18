@@ -75,5 +75,6 @@ const ZH = {
 'Panda':'熊貓','Lion':'獅子','Giraffe':'長頸鹿','Cat':'貓','Dog':'狗','Dolphin':'海豚','Rabbit':'兔子','Red':'紅色','Blue':'藍色','Green':'綠色','Yellow':'黃色','Pink':'粉紅色','Purple':'紫色','Orange':'橙色',
 'Dancing':'跳舞','Drawing':'畫畫','Reading':'閱讀','Sports':'運動','Singing':'唱歌','Ocean':'海洋','Forest':'森林','Space':'太空','Park':'公園','Beach':'海灘','Paper':'紙','Crayons':'蠟筆','Blocks':'積木','Cards':'卡牌','Toys':'玩具',
 'Which one do you like more?':'你比較喜歡哪一個？','Your favourite so far':'目前最喜歡','Start again':'重新選擇','All done!':'完成！','Choose your favourite':'選你最喜歡的',
+'We couldn’t open that photo. Please try a different picture.':'我們打不開這張相片，請試另一張。',
 'Listen to this page':'聽這頁','Listen':'聆聽','Stop':'停止','Choose a language':'選擇語言','Read this part':'讀這部分'
 };

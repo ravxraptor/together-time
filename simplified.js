@@ -19,6 +19,7 @@ const SIMPLIFIED = {
   "長": "长", "開": "开", "間": "间", "閱": "阅", "關": "关", "隨": "随", "險": "险", "隻": "只",
   "雙": "双", "離": "离", "靈": "灵", "頁": "页", "項": "项", "頸": "颈", "題": "题", "顏": "颜",
   "類": "类", "驚": "惊", "體": "体", "麼": "么", "黃": "黄", "點": "点", "齊": "齐",
+  "條": "条", "張": "张",
 };
 /** Convert the built-in Chinese text for the Mandarin display. */
 function simplifyChinese(text) { return [...text].map(char => SIMPLIFIED[char] || char).join('').replace(/萤幕/g, '屏幕'); }
