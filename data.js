@@ -7,7 +7,9 @@ const CATALOG = [
   {id:'cards',icon:'🃏',title:'A little card challenge',category:'Games',minutes:15,description:'Play a card or matching game and take turns.',materials:'Cards or paper',mode:'together'},
   {id:'move',icon:'🌿',title:'Nature treasure hunt',category:'Nature',minutes:15,description:'With a trusted adult, find three interesting things outside.',materials:'A safe place outdoors',mode:'together'},
   {id:'music',icon:'🎵',title:'Make a rhythm',category:'Music',minutes:10,description:'Create a rhythm by tapping and make up a dance.',materials:'Your hands',mode:'solo'},
-  {id:'colour',icon:'🌈',title:'Colour scavenger hunt',category:'Movement',minutes:10,description:'Find five different colours in a safe room.',materials:'A safe room',mode:'solo'}
+  {id:'colour',icon:'🌈',title:'Colour scavenger hunt',category:'Movement',minutes:10,description:'Find five different colours in a safe room.',materials:'A safe room',mode:'solo'},
+  {id:'mystery',icon:'🎁',title:'Mystery Box challenge',category:'Games',minutes:15,description:'Your grown-up hides something in a box. Feel it and listen to their clues, then guess what it is!',materials:'A box and a few safe objects',mode:'together'},
+  {id:'storystarter',icon:'💬',title:'Story starter',category:'Stories',minutes:10,description:'Your grown-up says the first line of a story. Take turns adding the next part!',materials:'Your imagination',mode:'together'}
 ];
 const INTERESTS=['Art & making','Building','Puzzles','Stories','Games','Nature','Music','Movement'];
 const TOGETHER=['Reading stories','Drawing together','Playing games','Going outside','Making things','Music & dancing'];

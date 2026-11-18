@@ -56,6 +56,19 @@ const IDEA_TEMPLATES = {
     [['animal'], p => `Find two colours you would use to draw ${p.animal}.`, p => `找兩種你畫${p.animal}時會用的顏色。`],
     [[], () => 'Find a colour you love and a different colour next to it.', () => '找一種你喜歡的顏色，再找它旁邊的另一種顏色。'],
   ],
+  mystery: [
+    [['color'], p => `Ask your grown-up to hide something ${p.color} in the box. Feel it and guess what it is!`, p => `請大人把一樣${p.color}的東西藏在盒子裏。摸一摸，猜猜是甚麼！`],
+    [['animal'], p => `Pretend you are ${p.animal} looking for treasure. Feel inside the box and guess!`, p => `假裝你是一隻${p.animal}在找寶物。摸摸盒子裏面，猜猜是甚麼！`],
+    [[], () => 'Close your eyes and feel the object. Is it soft, hard, smooth or bumpy? Then guess!', () => '閉上眼睛摸一摸：它是軟的、硬的、光滑的還是凹凸不平的？然後猜一猜！'],
+    [[], () => 'Ask your grown-up for three clues, one at a time. Can you guess before the last clue?', () => '請大人一次給你一個線索，一共三個。你能在最後一個線索之前猜到嗎？'],
+    [[], () => 'Swap roles: you hide something and give your grown-up the clues!', () => '交換角色：你來藏東西，再給大人線索！'],
+  ],
+  storystarter: [
+    [['animal', 'place'], p => `Your grown-up starts: “One day, ${p.animal} found a secret door in ${p.place}…” What happens next?`, p => `大人先說：「有一天，一隻${p.animal}在${p.place}發現了一道秘密門……」接下來會怎樣？`],
+    [['color'], p => `Your grown-up starts: “Overnight, everything in town turned ${p.color}…” Take turns adding the next part!`, p => `大人先說：「一夜之間，整個小鎮都變成了${p.color}……」輪流說下去吧！`],
+    [[], () => 'Your grown-up starts: “The toy box began to wobble…” Take turns adding one sentence each!', () => '大人先說：「玩具箱開始搖搖晃晃……」每人輪流說一句！'],
+    [[], () => 'Your grown-up starts: “Once upon a time, a tiny dragon was afraid of the dark…” What happens next?', () => '大人先說：「從前，有一條小小的龍很怕黑……」接下來會怎樣？'],
+  ],
 };
 /** Turn the child's optional answers into phrases, leaving out blank ones. */
 function ideaPhrases(profile, chinese) {
@@ -98,6 +111,8 @@ const ACTIVITY_QUESTIONS = {
   move: ['Which treasure was the most interesting, and why?', '哪一樣寶物最有趣？為甚麼？'],
   music: ['How would your rhythm sound if it were happy? Or sleepy?', '如果你的節奏很開心，會是怎樣的？如果很睏呢？'],
   colour: ['Which colour was the hardest to find?', '哪一種顏色最難找？'],
+  mystery: ['Which clue helped you guess the most?', '哪一個線索最能幫你猜中？'],
+  storystarter: ['What was your favourite part of the story we made together?', '我們一起編的故事，你最喜歡哪一部分？'],
 };
 const DEFAULT_QUESTION = ['What was your favourite part of doing this?', '做這個活動時，你最喜歡哪一部分？'];
 /** Return the conversation question that fits an activity, in the chosen language. */

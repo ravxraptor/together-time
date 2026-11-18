@@ -88,5 +88,13 @@ const ZH = {
 'AI ideas run on-device in compatible Chrome browsers. Elsewhere you will see a labelled demo idea built from their profile.':'相容的 Chrome 瀏覽器可在裝置內產生 AI 點子；其他瀏覽器會根據孩子資料顯示有標示的示範點子。',
 'Suggest ideas with AI ✨':'用 AI 建議點子 ✨','GUIDED IDEAS':'活動建議','Find their next favourite':'找下一個最愛活動',
 'How did it feel?':'感覺怎樣？','Happy':'開心','Proud':'自豪','Calm':'平靜','Silly':'搞笑','Frustrated':'有點沮喪','Ask them':'問問孩子','FEELINGS · LAST 7 DAYS':'感受 · 過去 7 天',
+'Mystery Box challenge':'神秘盒挑戰','Story starter':'故事接龍','Your grown-up hides something in a box. Feel it and listen to their clues, then guess what it is!':'大人把東西藏在盒子裏。摸一摸，聽聽線索，猜猜是甚麼！',
+'Your grown-up says the first line of a story. Take turns adding the next part!':'大人說故事的第一句，然後輪流說下去！','A box and a few safe objects':'一個盒子和幾樣安全的物品',
+'Weekly report':'每週報告','FAMILY REPORT · DEMO':'家庭報告 · 示範','Weekly family report':'每週家庭報告','A summary of the last 7 days to take home or share at a school sharing session.':'過去 7 天的總結，可以帶回家或在學校分享會上分享。',
+'Print / save as PDF ⎙':'列印 / 儲存為 PDF ⎙','Tip: choose “Save as PDF” as the printer to keep a copy.':'提示：在列印時選擇「儲存為 PDF」即可保留副本。','TOGETHER TIME · WEEKLY FAMILY REPORT':'TOGETHER TIME · 每週家庭報告',
+'Demo report: made from data saved in this browser (sample or entered by a family member). Screen time is entered by hand, not measured.':'示範報告：資料來自這個瀏覽器（範例或家人輸入）。螢幕時間由人手輸入，並非實際量度。',
+'Activities completed':'已完成活動','Together · on their own':'一起 · 自己','Screen time recorded':'已記錄螢幕時間','min':'分鐘','No feelings were shared this week.':'這星期沒有分享感受。',
+'Date':'日期','Activity':'活動','Who':'和誰','Feeling':'感受','Status':'狀態','Together':'一齊玩','On their own':'自己做','Approved':'已確認','Awaiting review':'等待審核',
+'Conversation questions used':'用過的對話問題','Conversation questions to try':'可以試試的對話問題',
 'Listen to this page':'聽這頁','Listen':'聆聽','Stop':'停止','Choose a language':'選擇語言','Read this part':'讀這部分'
 };

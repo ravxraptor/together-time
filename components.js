@@ -1,6 +1,6 @@
 /* Shared presentation pieces for both family views. */
 const CHILD_NAV=[['home','⌂','My day'],['explore','✿','Explore'],['screen','◷','Screen time'],['progress','☆','My progress'],['profile','☺','My profile']];
-const PARENT_NAV=[['overview','▦','Overview'],['activities','✿','Activities'],['reviews','▧','Photo reviews'],['settings','◷','Screen time'],['family','♡','Family & linking']];
+const PARENT_NAV=[['overview','▦','Overview'],['activities','✿','Activities'],['reviews','▧','Photo reviews'],['report','▤','Weekly report'],['settings','◷','Screen time'],['family','♡','Family & linking']];
 /** Show a brief confirmation without interrupting the current screen. */
 function toast(message){const node=document.querySelector('#toast');node.textContent=typeof translate==='function'?translate(message):message;node.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>node.classList.remove('show'),3500);}
 /** Render a sidebar navigation with the active screen indicated. */
