@@ -76,5 +76,16 @@ const ZH = {
 'Dancing':'跳舞','Drawing':'畫畫','Reading':'閱讀','Sports':'運動','Singing':'唱歌','Ocean':'海洋','Forest':'森林','Space':'太空','Park':'公園','Beach':'海灘','Paper':'紙','Crayons':'蠟筆','Blocks':'積木','Cards':'卡牌','Toys':'玩具',
 'Which one do you like more?':'你比較喜歡哪一個？','Your favourite so far':'目前最喜歡','Start again':'重新選擇','All done!':'完成！','Choose your favourite':'選你最喜歡的',
 'We couldn’t open that photo. Please try a different picture.':'我們打不開這張相片，請試另一張。',
+'Thinking of an idea…':'正在想點子…','Checking the photo…':'正在檢查相片…','On-device AI':'裝置內 AI','On-device AI idea':'裝置內 AI 點子','On-device AI note':'裝置內 AI 筆記',
+'Demo AI (simulated)':'示範 AI（模擬）','AI idea':'AI 點子','Idea from our library':'來自活動庫的點子','Talk about it together':'一起聊聊','Talk about it with your grown-up':'和大人聊聊','Talk about it later':'之後聊聊',
+'Please check the idea before you try it.':'試之前請先看看這個點子是否合適。','AI can be wrong. You make the final decision.':'AI 可能會出錯，最後由你決定。',
+'Please review and edit these ideas, then save the block.':'請檢查及修改這些點子，然後儲存。','Your idea is saved!':'已儲存你的點子！',
+'Generate a new AI idea ✨':'產生新的 AI 點子 ✨','Lovely, thanks ♡':'好呀，謝謝 ♡','Ask AI about the photo ✨':'請 AI 看看這張相片 ✨','Caregiver review':'照顧者審核',
+'On-device AI can describe the photo in supported Chrome browsers; elsewhere a labelled demo note is shown. Please make the final decision yourself.':'支援的 Chrome 瀏覽器可用裝置內 AI 描述相片；其他瀏覽器會顯示有標示的示範筆記。最後請由你決定。',
+'Ideas come from on-device AI when your browser has it, or from our built-in library.':'如果瀏覽器有裝置內 AI，點子由 AI 提供；否則來自內置活動庫。',
+'The example above comes from the built-in library. AI ideas run on-device in supported Chrome browsers; elsewhere you will see a labelled demo idea.':'以上例子來自內置活動庫。支援的 Chrome 瀏覽器可在裝置內產生 AI 點子；其他瀏覽器會顯示有標示的示範點子。',
+'An AI note (on-device, or a labelled demo) is added to each photo. You still approve it.':'每張相片會加上 AI 筆記（裝置內或有標示的示範），但仍需由你確認。',
+'AI ideas run on-device in compatible Chrome browsers. Elsewhere you will see a labelled demo idea built from their profile.':'相容的 Chrome 瀏覽器可在裝置內產生 AI 點子；其他瀏覽器會根據孩子資料顯示有標示的示範點子。',
+'Suggest ideas with AI ✨':'用 AI 建議點子 ✨','GUIDED IDEAS':'活動建議','Find their next favourite':'找下一個最愛活動',
 'Listen to this page':'聽這頁','Listen':'聆聽','Stop':'停止','Choose a language':'選擇語言','Read this part':'讀這部分'
 };

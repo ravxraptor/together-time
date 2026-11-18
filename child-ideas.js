@@ -88,20 +88,87 @@ function activityIdeas(item, profile) {
   const results = templates.map(([, english, zh]) => (chinese ? zh : english)(phrases));
   return lang === 'zh-CN' ? results.map(simplifyChinese) : results;
 }
-/** Show the next suggestion, cycling so consecutive clicks are different. */
-function nextChildIdea() {
+/* One parent–child conversation question per activity, in English and Chinese. */
+const ACTIVITY_QUESTIONS = {
+  draw: ['If you could step into your picture, where would you go first?', '如果你可以走進你的畫，你會先去哪裏？'],
+  build: ['Who would live in what you built, and what would they do there?', '誰會住在你砌的地方？他們會在那裏做甚麼？'],
+  puzzle: ['Which piece was the hardest to find, and how did you find it?', '哪一塊最難找？你是怎樣找到的？'],
+  story: ['What do you think happens next in our story?', '你覺得我們的故事接下來會發生甚麼事？'],
+  cards: ['What was your favourite moment in the game?', '遊戲裏你最喜歡哪一刻？'],
+  move: ['Which treasure was the most interesting, and why?', '哪一樣寶物最有趣？為甚麼？'],
+  music: ['How would your rhythm sound if it were happy? Or sleepy?', '如果你的節奏很開心，會是怎樣的？如果很睏呢？'],
+  colour: ['Which colour was the hardest to find?', '哪一種顏色最難找？'],
+};
+const DEFAULT_QUESTION = ['What was your favourite part of doing this?', '做這個活動時，你最喜歡哪一部分？'];
+/** Return the conversation question that fits an activity, in the chosen language. */
+function activityQuestion(id, lang = currentLanguage()) {
+  const [en, zh] = ACTIVITY_QUESTIONS[id] || DEFAULT_QUESTION;
+  return localText(en, zh, lang);
+}
+/** Translate a comma-separated list of profile answers for display. */
+function translatedList(text) {
+  return String(text || '').split(/,\s*/).filter(Boolean).map(part => translate(part)).join(currentLanguage() === 'en' ? ', ' : '、');
+}
+/** Build a parent-facing idea from the child's profile when AI is not available. */
+function profileIdea(profile) {
+  const approved = CATALOG.filter(item => state.family.approved.includes(item.id));
+  const pool = approved.length ? approved : CATALOG;
+  const likesTogether = profile.together.length > 0;
+  const score = item => Number(profile.interests.includes(item.category)) * 2 + Number(likesTogether && item.mode === 'together');
+  const ordered = [...pool].sort((a, b) => score(b) - score(a));
+  state.ideaCounters = state.ideaCounters || {};
+  const turn = state.ideaCounters.parent || 0;
+  state.ideaCounters.parent = turn + 1;
+  const item = ordered[turn % ordered.length];
+  const ideas = activityIdeas(item, profile);
+  const minutes = Number(profile.time) || item.minutes;
+  const materialText = profile.materials ? translatedList(profile.materials) : translate(item.materials);
+  const materials = currentLanguage() === 'en' ? materialText.toLowerCase() : materialText;
+  const reasons = [...profile.interests.filter(interest => interest === item.category), ...(item.mode === 'together' ? profile.together.slice(0, 1) : [])];
+  const reasonText = reasons.map(translate).join(currentLanguage() === 'en' ? ' and ' : '和');
+  return {
+    icon: item.icon,
+    title: translate(item.title),
+    why: reasons.length
+      ? localText(`For age ${profile.age} · ${profile.name} likes ${reasonText}.`, `適合 ${profile.age} 歲 · ${profile.name}喜歡${reasonText}。`)
+      : localText(`For age ${profile.age} · an approved activity to try together.`, `適合 ${profile.age} 歲 · 一個可以一起試的獲准活動。`),
+    steps: [
+      localText(`Get ready: find ${materials} and set a ${minutes}-minute timer.`, `準備：拿出${materials}，設定 ${minutes} 分鐘計時。`),
+      ideas[turn % ideas.length],
+    ],
+    question: activityQuestion(item.id),
+  };
+}
+/** Show the next suggestion: on-device AI first, otherwise the built-in library. */
+async function nextChildIdea() {
   const item = activity(state.chosen);
   const output = document.querySelector('#activity-idea');
   if (!item || !output) return;
-  const ideas = activityIdeas(item, state.profile);
-  state.ideaCounters = state.ideaCounters || {};
-  const index = (state.ideaCounters[item.id] || 0) % ideas.length;
-  const idea = ideas[index];
-  state.ideaCounters[item.id] = index + 1;
-  state.draftIdea = idea;
+  const token = (nextChildIdea.token || 0) + 1;
+  nextChildIdea.token = token;
+  output.innerHTML = `<p class="helper">${esc(translate('Thinking of an idea…'))}</p>`;
+  const profile = state.profile;
+  const likes = [profile.interests.join(', '), profile.animal && `favourite animal ${profile.animal}`, profile.color && `favourite colour ${profile.color}`, profile.place && `favourite place ${profile.place}`].filter(Boolean).join('; ');
+  const prompt = `Give one short, simple, safe idea for a child aged ${profile.age} doing the offline activity "${item.title}" (${item.description}). ` +
+    `They like: ${likes || 'playing'}. Use one or two short sentences that a 6 to 8 year old can read. ` +
+    'No screens, no sharp tools, no cooking, no going anywhere without a grown-up. Reply with the idea only.';
+  const result = await askAI({ prompt, validate: (text, p) => usableAIText(text, p, 240) && text.split('\n').length <= 3, fallback: () => {
+    const ideas = activityIdeas(item, profile);
+    state.ideaCounters = state.ideaCounters || {};
+    const index = (state.ideaCounters[item.id] || 0) % ideas.length;
+    state.ideaCounters[item.id] = index + 1;
+    return { text: ideas[index] };
+  } });
+  if (nextChildIdea.token !== token || document.querySelector('#activity-idea') !== output) return;
+  state.draftIdea = result.text;
+  state.draftIdeaSource = result.source;
   saveState();
-  output.innerHTML = `<div class="prompt-card"><b>Here’s an idea for you ✨</b><p>${esc(idea)}</p><button class="button primary small" data-action="use-child-idea">I choose this idea ♡</button></div>`;
+  output.innerHTML = `<div class="prompt-card">${aiBadge(result.source, 'AI idea', 'Idea from our library')}<b>Here’s an idea for you ✨</b><p>${esc(result.text)}</p>${questionMarkup(activityQuestion(item.id))}<button class="button primary small" data-action="use-child-idea">I choose this idea ♡</button></div>`;
   localizeUI(output);
+}
+/** Render a parent–child conversation question card. */
+function questionMarkup(question, heading = 'Talk about it with your grown-up') {
+  return `<div class="question-card"><b>💬 ${esc(translate(heading))}</b><p>“${esc(question)}”</p></div>`;
 }
 /** Save the child's choice so it can accompany their activity submission. */
 function useChildIdea() {
@@ -109,7 +176,7 @@ function useChildIdea() {
   state.selectedIdea = state.draftIdea;
   saveState();
   const output = document.querySelector('#activity-idea');
-  if (output) output.innerHTML = `<div class="prompt-card"><b>Your chosen idea ♡</b><p>${esc(state.selectedIdea)}</p><small>You can ask for another idea whenever you like.</small></div>`;
+  if (output) output.innerHTML = `<div class="prompt-card">${aiBadge(state.draftIdeaSource || 'demo', 'AI idea', 'Idea from our library')}<b>Your chosen idea ♡</b><p>${esc(state.selectedIdea)}</p>${questionMarkup(activityQuestion(state.chosen))}<small>You can ask for another idea whenever you like.</small></div>`;
   localizeUI(output);
-  toast(currentLanguage() !== 'en' ? '已儲存你的點子！' : 'Your idea is saved!');
+  toast('Your idea is saved!');
 }

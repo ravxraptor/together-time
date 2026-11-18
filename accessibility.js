@@ -12,6 +12,11 @@ function translate(text) {
   const match = text.match(/^(\s*(?:[🎂🎨👨‍👩‍👧🐾🌈⭐🌍⏱️🧺✨♡◷✿]+\s*)?)(.*?)(\s*)$/u);
   return match && ZH[match[2]] ? match[1] + chinese(ZH[match[2]]) + match[3] : text;
 }
+/** Pick English or Chinese wording for built sentences; Mandarin gets simplified characters. */
+function localText(en, zh, lang = currentLanguage()) {
+  if (lang === 'en') return en;
+  return lang === 'zh-CN' ? simplifyChinese(zh) : zh;
+}
 /** Translate text in a rendered interface without touching form values. */
 function localizeUI(root) {
   if (!root || !document.createTreeWalker || currentLanguage() === 'en') return;

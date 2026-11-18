@@ -102,21 +102,15 @@ async function generatePlanIdeas() {
   const output = document.querySelector('#plan-ai-status');
   const input = document.querySelector('#plan-form textarea[name="options"]');
   if (!output || !input) return;
-  output.textContent = 'Preparing the on-device model. The first use may download it…';
-  let session;
-  try {
-    session = await createLocalModel(false);
-    const result = await session.prompt(`Suggest three simple, safe offline activities for a child aged ${state.profile.age}. Interests: ${state.profile.interests.join(', ')}. Activities with a grown-up: ${state.profile.together.join(', ')}. Materials: ${state.profile.materials}. Write exactly three short activity names, each on its own line, with no numbering. A caregiver will check them.`);
-    if (document.querySelector('#plan-ai-status') !== output) return;
-    input.value = String(result).split('\n').map(x => x.replace(/^\s*(?:[-*•]|\d+[.)])\s*/, '').trim()).filter(Boolean).slice(0, 3).join('\n');
-    output.textContent = 'Please review and edit these ideas, then save the block.';
-  } catch (error) {
-    if (document.querySelector('#plan-ai-status') !== output) return;
-    const suggestions = [...CATALOG].sort((a,b) => Number(state.profile.interests.includes(b.category)) - Number(state.profile.interests.includes(a.category))).slice(0,3);
-    input.value = suggestions.map(item => item.title).join('\n');
-    output.textContent = 'AI is unavailable here. These are built-in sample ideas, not AI-generated. Review them before saving.';
-  }
-  finally { if (session) session.destroy(); }
+  output.textContent = translate('Thinking of an idea…');
+  const lines = text => String(text).split('\n').map(x => x.replace(/^\s*(?:[-*•]|\d+[.)])\s*/, '').trim()).filter(x => x && x.length <= 60).slice(0, 3);
+  const prompt = `Suggest three simple, safe offline activities for a child aged ${state.profile.age}. Interests: ${state.profile.interests.join(', ')}. Activities with a grown-up: ${state.profile.together.join(', ')}. Materials: ${state.profile.materials}. Write exactly three short activity names, each on its own line, with no numbering. A caregiver will check them.`;
+  const result = await askAI({ prompt, validate: (text, p) => usableAIText(text, p, 400) && lines(text).length >= 2, fallback: () => ({
+    ideas: [...CATALOG].sort((a,b) => Number(state.profile.interests.includes(b.category)) - Number(state.profile.interests.includes(a.category))).slice(0,3).map(item => item.title),
+  }) });
+  if (document.querySelector('#plan-ai-status') !== output) return;
+  input.value = (result.source === 'ai' ? lines(result.text) : result.ideas).join('\n');
+  output.textContent = result.source === 'ai' ? translate('Please review and edit these ideas, then save the block.') : demoLabel(result.reason);
 }
 /** Route calendar interactions without changing the rest of the app. */
 document.addEventListener('click', event => {
