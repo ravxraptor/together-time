@@ -116,7 +116,7 @@ const ZH = {
 'Pick a little adventure, make something wonderful, and share it with your grown-up.':'選一個小冒險，創作一些很棒的東西，再和大人分享。','made with curiosity':'用好奇心製作',
 'There are no demo breaks or scheduled app restrictions right now.':'現在沒有示範休息或已安排的應用程式限制。','Demo only: devices and apps are not actually blocked.':'只供示範：裝置和應用程式不會真的被封鎖。',
 'Take a picture of your creation and tell your grown-up about it.':'為你的作品拍照，再告訴大人。','Photograph the activity, without people or personal details.':'只拍活動作品，不要拍到人或個人資料。','Photos are saved only in this browser for the demonstration.':'相片只會保存在這個瀏覽器，用作示範。',
-'My favourite part was…':'我最喜歡的部分是…','ACTIVITY SUBMISSION':'活動提交','A LITTLE PROMPT':'小提示','“What was your favourite part of making this?”':'「做這個作品時，你最喜歡哪一部分？」',
+'My favourite part was…':'我最喜歡的部分是…','ACTIVITY SUBMISSION':'活動提交','A LITTLE PROMPT':'小提示','“What makes this special to you?”':'「這個作品對你來說，有甚麼特別？」',
 'A little conversation can turn a creation into a moment together.':'簡單聊幾句，就能把作品變成親子時光。','No creations yet. When your child shares a photo, it will appear here.':'還沒有作品。孩子分享相片後會在這裏顯示。','Manage activities':'管理活動',
 'Make space for play, connection and the things they love.':'為遊戲、親子連結和孩子喜愛的事留點空間。','Make a little room for connection.':'留一點親子時間。','Have ten minutes? Pick a favourite activity and ask what they enjoyed most.':'有十分鐘嗎？選一個喜歡的活動，問問孩子最喜歡甚麼。',
 'Manually entered for today':'今天由人手輸入','Photo submissions':'相片提交','Delete submission':'刪除提交',

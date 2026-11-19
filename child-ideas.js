@@ -7,9 +7,9 @@ const IDEA_TEMPLATES = {
   draw: [
     [['animal', 'place', 'color'], p => `Draw ${p.animal} exploring ${p.place}. Add something ${p.color}.`, p => `畫一隻${p.animal}去${p.place}探險，再加一樣${p.color}的東西。`],
     [['animal', 'hobby'], p => `Draw ${p.animal} that loves ${p.hobby}.`, p => `畫一隻喜歡${p.hobby}的${p.animal}。`],
-    [['color'], p => `Draw a ${p.color} home and three things inside it.`, p => `畫一間${p.color}的屋，再畫屋裏的三樣東西。`],
-    [['place'], p => `Draw ${p.place} and add three tiny details.`, p => `畫出${p.place}，加上三個小細節。`],
-    [[], () => 'Draw your favourite place and add three tiny details.', () => '畫出你最喜歡的地方，加上三個小細節。'],
+    [['color'], p => `Draw your happy place at night. Make one thing glow ${p.color}!`, p => `畫出你的快樂地方在晚上的樣子，讓一樣東西發出${p.color}的光！`],
+    [['place'], p => `Draw ${p.place} with a secret door hidden somewhere. Where does it lead?`, p => `畫出${p.place}，在某處藏一道秘密門。這道門通往哪裏？`],
+    [[], () => 'Turn your drawing into a postcard! Add a short message to someone you’d love to invite to this place.', () => '把你的畫變成一張明信片！寫一句短短的話，邀請一個你想帶來這裏的人。'],
     [[], () => 'Draw a friendly animal on an adventure.', () => '畫一隻友善的動物去探險。'],
   ],
   build: [
@@ -17,7 +17,7 @@ const IDEA_TEMPLATES = {
     [['place', 'color'], p => `Build a tiny model of ${p.place} and add something ${p.color}.`, p => `砌一個小小的${p.place}，再加一樣${p.color}的東西。`],
     [['animal', 'hobby'], p => `Build a place where ${p.animal} could enjoy ${p.hobby}.`, p => `砌一個讓${p.animal}可以${p.hobby}的地方。`],
     [[], () => 'Build the tallest tower you can, then make a bridge next to it.', () => '砌一座最高的塔，再在旁邊砌一條橋。'],
-    [[], () => 'Build a tiny park for your favourite toy.', () => '為你最喜歡的玩具砌一個小公園。'],
+    [[], () => 'Give your town a name, then build a road so a toy car can visit every building.', () => '為你的小鎮改個名字，再砌一條路，讓玩具車可以去到每一座建築物。'],
   ],
   puzzle: [
     [['color'], p => `Find a puzzle piece with some ${p.color} on it, then find its neighbour.`, p => `找一塊有${p.color}的拼圖，再找出它旁邊的那一塊。`],
@@ -51,15 +51,15 @@ const IDEA_TEMPLATES = {
     [[], () => 'Make a quiet rhythm, then a loud one. Which do you like more?', () => '先拍一個輕輕的節奏，再拍一個大聲的。你比較喜歡哪一個？'],
   ],
   colour: [
-    [['color'], p => `In a safe room, find something ${p.color} and two other colours.`, p => `在安全的房間裏找一樣${p.color}的東西，再找兩種其他顏色。`],
+    [['color'], p => `Find something ${p.color}, then line up three more things from lightest to darkest.`, p => `找一樣${p.color}的東西，再找三樣東西，由最淺到最深排成一行。`],
     [['place'], p => `Find three colours you might see in ${p.place}.`, p => `找三種在${p.place}可能看到的顏色。`],
     [['animal'], p => `Find two colours you would use to draw ${p.animal}.`, p => `找兩種你畫${p.animal}時會用的顏色。`],
-    [[], () => 'Find a colour you love and a different colour next to it.', () => '找一種你喜歡的顏色，再找它旁邊的另一種顏色。'],
+    [[], () => 'Make a rainbow! Line up the five colourful things you found in rainbow order.', () => '排一條彩虹！把你找到的五樣彩色東西，按彩虹的次序排成一行。'],
   ],
   mystery: [
-    [['color'], p => `Ask your grown-up to hide something ${p.color} in the box. Feel it and guess what it is!`, p => `請大人把一樣${p.color}的東西藏在盒子裏。摸一摸，猜猜是甚麼！`],
+    [['color'], p => `Ask your grown-up to hide something ${p.color}. Before you guess, describe it in three words!`, p => `請大人藏一樣${p.color}的東西。猜之前，先用三個詞形容它！`],
     [['animal'], p => `Pretend you are ${p.animal} looking for treasure. Feel inside the box and guess!`, p => `假裝你是一隻${p.animal}在找寶物。摸摸盒子裏面，猜猜是甚麼！`],
-    [[], () => 'Close your eyes and feel the object. Is it soft, hard, smooth or bumpy? Then guess!', () => '閉上眼睛摸一摸：它是軟的、硬的、光滑的還是凹凸不平的？然後猜一猜！'],
+    [[], () => 'Before you touch, shake the box gently and listen. Can you guess from the sound alone?', () => '摸之前，先輕輕搖一搖盒子，聽一聽。只聽聲音你能猜到嗎？'],
     [[], () => 'Ask your grown-up for three clues, one at a time. Can you guess before the last clue?', () => '請大人一次給你一個線索，一共三個。你能在最後一個線索之前猜到嗎？'],
     [[], () => 'Swap roles: you hide something and give your grown-up the clues!', () => '交換角色：你來藏東西，再給大人線索！'],
   ],
@@ -166,6 +166,7 @@ async function nextChildIdea() {
   const likes = [profile.interests.join(', '), profile.animal && `favourite animal ${profile.animal}`, profile.color && `favourite colour ${profile.color}`, profile.place && `favourite place ${profile.place}`].filter(Boolean).join('; ');
   const prompt = `Give one short, simple, safe idea for a child aged ${profile.age} doing the offline activity "${item.title}" (${item.description}). ` +
     `They like: ${likes || 'playing'}. Use one or two short sentences that a 6 to 8 year old can read. ` +
+    'Give a new twist, an extra challenge or a creative extension; do not just repeat the activity instructions. ' +
     'No screens, no sharp tools, no cooking, no going anywhere without a grown-up. Reply with the idea only.';
   const result = await askAI({ prompt, validate: (text, p) => usableAIText(text, p, 240) && text.split('\n').length <= 3, fallback: () => {
     const ideas = activityIdeas(item, profile);
